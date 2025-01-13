@@ -140,7 +140,16 @@ const MemoryGame: React.FC = () => {
     return (
         <div style={styles.gameContainer}>
             <h1>ニノクロ神経衰弱</h1>
-            <div style={{fontSize:"18px"}}>※スマホは横画面推奨</div>
+            {gameState.isGameOver && (
+                <div style={styles.gameOverText}>
+                    ゲーム終了{' '}
+                    <button onClick={resetGame} style={styles.resetButton}>
+                        ゲームスタート
+                    </button>
+                    
+                </div>
+            )}
+            <label  style={{ fontSize: "15px",marginLeft:"30px",color:"black" }}>※スマホは横画面推奨</label>
             <div style={styles.cardContainer}>
                 {gameState.cards.map((card, index) => (
                     <Card
@@ -155,14 +164,7 @@ const MemoryGame: React.FC = () => {
                     />
                 ))}
             </div>
-            {gameState.isGameOver && (
-                <div style={styles.gameOverText}>
-                    ゲーム終了{' '}
-                    <button onClick={resetGame} style={styles.resetButton}>
-                        ゲームスタート
-                    </button>
-                </div>
-            )}
+
             {/* モーダルを表示 */}
             <Modal
                 isOpen={gameState.isModalOpen}
@@ -176,12 +178,12 @@ const MemoryGame: React.FC = () => {
 
 const styles = {
     gameContainer: {
-        textAlign: 'center'as'center',
+        textAlign: 'center' as 'center',
         marginTop: '50px',
     },
     cardContainer: {
         display: 'flex',
-        flexWrap: 'wrap'as'wrap',
+        flexWrap: 'wrap' as 'wrap',
         justifyContent: 'center',
     },
     gameOverText: {
@@ -198,26 +200,6 @@ const styles = {
         color: 'white',
         border: 'none',
         borderRadius: '4px',
-    },
-    
-    // スマホ画面に対応したスタイル
-    '@media (max-width: 600px)': {
-        gameContainer: {
-            padding: '10px',
-        },
-        cardContainer: {
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)', // スマホでは4列に表示
-            gap: '10px',
-            justifyItems: 'center',
-        },
-        card: {
-            width: '90%', // 相対的な幅に変更
-            height: 'auto',
-        },
-        modalContent: {
-            fontSize: '16px',
-        },
     },
 };
 
