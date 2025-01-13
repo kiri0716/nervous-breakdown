@@ -102,7 +102,7 @@ const MemoryGame: React.FC = () => {
                         cards: updatedCards.map((card) => ({ ...card, isFlipped: false })),
                         flippedCards: [],
                     }));
-                }, 1000);
+                }, 2000);//２秒に修正
             }
         }
     };
