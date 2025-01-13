@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Card from './Card';
 import { Card as CardType, cardContents } from '../types/CardType';
-import Modal from './modal';
+import Modal from './Modal';
 
 
 interface MemoryGameState {
